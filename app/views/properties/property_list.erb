@@ -12,14 +12,14 @@
     <li class="list-group-item"><b>Deposit : </b> <%= property.deposit %></li>
   </ul>
   <div class="card-body">
-   <%
-=begin%>
- <button type="button" class="btn btn-info" ><%= link_to image_tag("https://img.icons8.com/material-rounded/30/000000/visible.png"),property_path(property)%></button> 
-<%
-=end%>
-   <button type="button" class="btn btn-success">Intrested</button>
-    <button type="button" class="btn btn-danger">NotIntrested</button>
-   </div> 
+    <% like = current_user.likes.find_by(property: property)%>
+    <% if like.nil? %>
+      <%= button_to "Like", likes_path, params: {like: { property_id: property.id }}, method: :post %>
+    <% else %>
+      <%= button_to "Unlike", like_path(like), method: :delete %>
+    <% end %> 
+ 
+  </div> 
 </div>
 <% end %>
 

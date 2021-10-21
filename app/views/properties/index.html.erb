@@ -3,7 +3,7 @@
 <%  @properties.each do |property| %>
 <br>
 <div class="card" style="width: 18rem;">
- <%= image_tag property.image if property.image %>
+ <%=  image_tag(property.image.present? ? property.image : "https://i.picsum.photos/id/249/536/354.jpg?hmac=-KIW4qA7yddnnD9i-E4Eo9K5EVNuXkj8dLot4MgCs2k") %>
   <div class="card-body">
     <h5 class="card-title"> <%= property.title %></h5>
   </div>
